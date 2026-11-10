@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f8f4">
+  <title>سند | معًا لأجل الأيتام</title>
+  <link rel="stylesheet" href="./index%20.css">
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="brand" aria-label="سند - معًا لأجل الأيتام">
+        <div class="brand-mark" aria-hidden="true">
+          <svg width="23" height="23" viewBox="0 0 24 24" fill="none">
+            <path d="M12 20s-7.5-4.45-7.5-10.1A4.1 4.1 0 0 1 12 7.7a4.1 4.1 0 0 1 7.5 2.2C19.5 15.55 12 20 12 20Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 12h2l1.2-2.2 1.6 4.4 1.1-2.2H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div><div class="brand-name">سَند</div><div class="brand-note">معًا لأجل طفولة أكرم</div></div>
+      </div>
+      <div class="header-note">كل مساهمة صغيرة تصنع فرقًا كبيرًا</div>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div class="eyebrow"><span class="eyebrow-dot"></span> مساحة آمنة للعطاء</div>
+        <h1 id="page-title">خلّي عطاك<br><span>يوصل لمستحقه</span></h1>
+        <p>اسأل عن احتياجات الأيتام وتكاليف رعايتهم، اعرف طرق المساعدة، أو احسب زكاة مالك بطريقة إرشادية.</p>
+        <div class="impact">
+          <div class="impact-icons" aria-hidden="true"><span>♡</span><span>☀</span><span>✿</span></div>
+          <div class="impact-text"><strong>رعاية تبدأ بالاهتمام</strong>غذاء، تعليم، صحة، واحتواء نفسي</div>
+        </div>
+      </section>
+
+      <section class="chat-card" aria-label="محادثة سند">
+        <div class="chat-header">
+          <div class="assistant-info">
+            <div class="assistant-avatar" aria-hidden="true">
+              <svg width="23" height="23" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3.5a7.5 7.5 0 0 0-7.5 7.5v5a2 2 0 0 0 2 2h1.2v-6H6.5a5.5 5.5 0 0 1 11 0h-1.2v6h1.2a2 2 0 0 0 2-2v-5A7.5 7.5 0 0 0 12 3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M16.5 18c-.7 1.4-2.1 2.2-4.5 2.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div><div class="assistant-name">مساعد سند</div><div class="assistant-status">متاح لمساعدتك الآن</div></div>
+          </div>
+          <div class="secure-label"><span aria-hidden="true">✦</span> مساعد توعوي</div>
+        </div>
+
+        <div class="chat-content" id="chat" aria-live="polite">
+          <div class="date-label">أهلًا بيك في سند</div>
+          <div class="message-row">
+            <div class="mini-avatar" aria-hidden="true">♡</div>
+            <div class="bubble">أهلًا بيك 🌿 أنا مساعد سند. أقدر أساعدك تعرف احتياجات الطفل اليتيم وتكاليف الرعاية، تختار طريقة للمساهمة، أو تحسب زكاة مالك بشكل مبدئي. تحب نبدأ بإيه؟</div>
+          </div>
+          <div class="quick-actions" id="quick-actions">
+            <button class="quick-action" data-action="cost">تكلفة رعاية يتيم</button>
+            <button class="quick-action" data-action="needs">إيه احتياجاتهم؟</button>
+            <button class="quick-action" data-action="donate">عايز أتبرع</button>
+            <button class="quick-action" data-action="zakat">احسب زكاة مالي</button>
+          </div>
+        </div>
+
+        <div class="composer-wrap">
+          <form class="composer" id="chat-form">
+            <input id="chat-input" type="text" autocomplete="off" placeholder="اكتب سؤالك هنا..." aria-label="اكتب سؤالك">
+            <button class="send-button" type="submit" aria-label="إرسال الرسالة">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m21 3-7.2 18-3.8-7-7-3.8L21 3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 14 21 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+          </form>
+          <p class="disclaimer">المعلومات إرشادية، والتبرعات الفعلية تكون عبر جهات مرخّصة وموثوقة.</p>
+        </div>
+      </section>
+    </main>
+    <footer>سند — لأن الرعاية حق، والعطاء أمانة</footer>
+  </div>
+
+  <script>
+    const chat = document.getElementById("chat");
+    const form = document.getElementById("chat-form");
+    const input = document.getElementById("chat-input");
+    const actions = document.getElementById("quick-actions");
+    const formatter = new Intl.NumberFormat("ar-EG");
+
+    function addMessage(text, sender) {
+      const row = document.createElement("div");
+      row.className = `message-row${sender === "user" ? " user" : ""}`;
+      if (sender !== "user") {
+        const avatar = document.createElement("div");
+        avatar.className = "mini-avatar";
+        avatar.setAttribute("aria-hidden", "true");
+        avatar.textContent = "♡";
+        row.append(avatar);
+      }
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+      bubble.textContent = text;
+      row.append(bubble);
+      chat.insertBefore(row, actions);
+      row.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      return row;
+    }
+
+    function addCard(content, className = "result-card") {
+      const card = document.createElement("div");
+      card.className = className;
+      card.innerHTML = content;
+      chat.insertBefore(card, actions);
+      card.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      return card;
+    }
+
+    function showDonationForm() {
+      const card = addCard("", "form-card");
+      card.innerHTML = `
+        <label>قيمة المساهمة بالجنيه المصري
+          <input type="number" min="1" step="1" placeholder="مثال: 500" inputmode="numeric" required>
+        </label>
+        <button class="form-submit" type="button">اعرف الخطوة الآمنة للتبرع</button>`;
+      card.querySelector("button").addEventListener("click", () => {
+        const amount = Number(card.querySelector("input").value);
+        if (!Number.isFinite(amount) || amount <= 0) {
+          card.querySelector("input").focus();
+          card.querySelector("input").setCustomValidity("اكتب مبلغًا صحيحًا أكبر من صفر.");
+          card.querySelector("input").reportValidity();
+          card.querySelector("input").addEventListener("input", (event) => event.target.setCustomValidity(""), { once: true });
+          return;
+        }
+        card.remove();
+        addMessage(`أفكر أساهم بمبلغ ${formatter.format(amount)} جنيه`, "user");
+        addMessage("شكرًا لنيّتك الطيبة 💚 دي واجهة تجريبية ولا تستقبل أو تحوّل أموالًا. قبل التبرع، اختار جمعية مرخّصة وتحقق من بياناتها وطرق الدفع الرسمية، واسألها عن أوجه صرف التبرع وإيصال الاستلام. ما تشاركش بيانات بطاقتك أو حسابك هنا.");
+      });
+    }
+
+    function showZakatCalculator() {
+      const card = addCard("", "form-card");
+      card.innerHTML = `
+        <label>إجمالي المال الذي تملكه (بالجنيه)
+          <input type="number" min="0" step="0.01" placeholder="اكتب المبلغ" inputmode="decimal" required>
+        </label>
+        <label class="hawl-label"><input type="checkbox" class="hawl-check">حال عليه الحول الهجري وبلغ النصاب</label>
+        <button class="form-submit" type="button">احسب تقديريًا</button>`;
+      card.querySelector("button").addEventListener("click", () => {
+        const amountInput = card.querySelector('input[type="number"]');
+        const amount = Number(amountInput.value);
+        if (!Number.isFinite(amount) || amount <= 0) {
+          amountInput.focus();
+          amountInput.setCustomValidity("اكتب مبلغًا صحيحًا أكبر من صفر.");
+          amountInput.reportValidity();
+          amountInput.addEventListener("input", (event) => event.target.setCustomValidity(""), { once: true });
+          return;
+        }
+        const complete = card.querySelector(".hawl-check").checked;
+        card.remove();
+        if (!complete) {
+          addMessage("بحسب التقدير المبسط، ٢.٥٪ من المبلغ تساوي " + formatter.format(amount * 0.025) + " جنيه. لكن لا تجب الزكاة بهذا الحساب إلا عند تحقق شروطها، ومنها بلوغ النصاب ومرور الحول الهجري في الحالات التي يشترط فيها ذلك. راجع جهة إفتاء موثوقة لتحديد النصاب والوعاء وما يُخصم.");
+          return;
+        }
+        addMessage("٢.٥٪ من المبلغ المدخل تساوي تقريبًا " + formatter.format(amount * 0.025) + " جنيه. هذا حساب أولي فقط؛ النصاب والوعاء الزكوي يختلفان بحسب نوع المال والديون والتفاصيل الشرعية. تأكد من جهة إفتاء أو مؤسسة زكاة موثوقة قبل الإخراج.");
+      });
+    }
+
+    function replyFor(action) {
+      if (action === "cost") {
+        addMessage("تكلفة رعاية اليتيم بتختلف حسب البلد والعمر وهل الرعاية أسرية ولا مؤسسية. البنود الأساسية غالبًا: الغذاء، الملابس، التعليم، العلاج، السكن، والدعم النفسي. مفيش رقم موحد أو سعر ثابت للكفالة؛ اطلب من جمعية موثوقة ميزانية واضحة ومحدثة لكل بند.");
+      } else if (action === "needs") {
+        addMessage("الاحتياجات مش مادية بس 🌱 الطفل محتاج غذاء صحي، تعليم وأدوات مدرسية، متابعة صحية، ملابس مناسبة، بيئة آمنة، واهتمام نفسي واجتماعي. الأفضل تكون المساعدة بكرامة ومن خلال جهة عندها متابعة وحماية للأطفال.");
+      } else if (action === "donate") {
+        addMessage("تقدر تساهم بمبلغ تختاره أو تسأل جمعية موثوقة عن كفالة شهرية أو دعم تعليمي أو صحي. التبرع هنا غير مفعّل؛ اختار جهة مرخّصة وتحقق من قنوات الدفع الرسمية. تحب تحدد قيمة مساهمتك المقترحة؟");
+        showDonationForm();
+      } else if (action === "zakat") {
+        addMessage("أقدر أطلع لك تقديرًا حسابيًا أوليًا: النسبة الشائعة لزكاة المال هي ٢.٥٪ عند تحقق الشروط الشرعية، ومنها بلوغ النصاب ومرور الحول الهجري. الحاسبة للتوعية فقط، ومش فتوى أو بديل عن سؤال أهل الاختصاص.");
+        showZakatCalculator();
+      }
+    }
+
+    function handleText(text) {
+      const normalized = text.trim().toLowerCase();
+      if (!normalized) return;
+      addMessage(text, "user");
+      if (/زكاة|نصاب|حول|٢\.٥|2\.5/.test(normalized)) {
+        replyFor("zakat");
+      } else if (/تبرع|اتبرع|مساهمة|فلوس|مال|أساهم/.test(normalized)) {
+        replyFor("donate");
+      } else if (/تكلفة|تكاليف|كفالة|مبلغ|كام|كم/.test(normalized)) {
+        replyFor("cost");
+      } else if (/احتياج|احتياجات|محتاج|مساعدة|ساعد/.test(normalized)) {
+        replyFor("needs");
+      } else {
+        addMessage("أقدر أساعدك في تكلفة رعاية اليتيم، احتياجات الأطفال، طرق التبرع الآمن، أو حساب زكاة المال بشكل إرشادي. اختار موضوع من الأزرار أو اكتب سؤالك بصورة أوضح.");
+      }
+    }
+
+    actions.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-action]");
+      if (!button) return;
+      replyFor(button.dataset.action);
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      handleText(input.value);
+      input.value = "";
+      input.focus();
+    });
+  </script>
+</body>
+</html>
